@@ -3,20 +3,25 @@
 #include <stdio.h>
 
 int StackOfPoint::n_stack = 0;
-StackOfPoint::StackOfPoint(){
+
+StackOfPoint::StackOfPoint()
+	: defaultStackSize(DEFAULT_STACK_SIZE) {
 	data = new Point [defaultStackSize];
 	topStack = 0;
 	size = defaultStackSize;
 	n_stack++;
 }
-StackOfPoint::StackOfPoint(int s){
+
+StackOfPoint::StackOfPoint(int s)
+	: defaultStackSize(DEFAULT_STACK_SIZE) {
 	data = new Point [s];
 	topStack = 0;
 	size = s;
 	n_stack++;
-}	
-StackOfPoint::StackOfPoint(const StackOfPoint& s){
-	int i; 
+}
+StackOfPoint::StackOfPoint(const StackOfPoint& s)
+	: defaultStackSize(DEFAULT_STACK_SIZE) {
+	int i;
 
 	size = s.size;
 	topStack = s.topStack;
@@ -31,11 +36,11 @@ StackOfPoint::~StackOfPoint(){
 	size = 0;
 	data = 0;
 }
-StackOfPoint& StackOfPoint::operator= (const Stack& s){
-	int i; 
-	delete [] data; 
+StackOfPoint& StackOfPoint::operator= (const StackOfPoint& s){
+	int i;
+	delete [] data;
 	size = s.size;
-	data = new int [size];
+	data = new Point[size];
 	topStack = s.topStack;
 
 	for (i=0; i<topStack; i++)
@@ -43,7 +48,7 @@ StackOfPoint& StackOfPoint::operator= (const Stack& s){
 	return *this;
 }
 void StackOfPoint::Push (Point p){
-	if (isFull()){
+	if (IsFull()){
 		printf("stack penuh\n");
 	}
 	else {

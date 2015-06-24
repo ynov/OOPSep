@@ -2,13 +2,15 @@
 #define stackofpoint_h
 #include "point.h"
 
+#define DEFAULT_STACK_SIZE 500
+
 class StackOfPoint{
 public:
 	StackOfPoint();
-	StackOfPoint(int);	
+	StackOfPoint(int);
 	StackOfPoint(const StackOfPoint& s);
 	~StackOfPoint();
-	StackOfPoint& operator= (const Stack& s);
+	StackOfPoint& operator= (const StackOfPoint& s);
 	void Push (Point );
 	void Pop (Point& );
 	int IsEmpty() const;
@@ -18,11 +20,11 @@ public:
 	friend void operator>>(StackOfPoint&, Point&);
 
 	static int NumStackObj();
-private: 
-	const int defaultStackSize = 500; 
-	int topStack; 
+private:
+	const int defaultStackSize;
+	int topStack;
 	int size;
-	Point *data; 
+	Point *data;
 	static int n_stack;
 };
-#endif 
+#endif
